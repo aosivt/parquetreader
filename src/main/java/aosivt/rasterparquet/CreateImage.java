@@ -2,7 +2,6 @@ package aosivt.rasterparquet;
 
 import java.awt.*;
 import java.util.Objects;
-
 import org.gdal.gdal.Band;
 import org.gdal.gdal.Dataset;
 import org.gdal.gdal.Driver;
@@ -40,7 +39,6 @@ public class CreateImage {
     public CreateImage() {
         gdal.AllRegister();
         driver = gdal.GetDriverByName("ENVI");
-
     }
 
     public void initDataset(String nameFile, int xsize, int ysize) {
@@ -53,13 +51,13 @@ public class CreateImage {
         height = ysize;
     }
 
-    public void addProjection(String projection){
+    public void addProjection(String projection) {
         dataset.SetProjection(projection);
     }
-    public void addGeoTransform(java.util.List<java.lang.Double> geoTransform){
+
+    public void addGeoTransform(java.util.List<java.lang.Double> geoTransform) {
         dataset.SetGeoTransform(geoTransform.stream().mapToDouble(Double::doubleValue).toArray());
     }
-
 
     public void addRow(int rowId, float[] data) {
 
@@ -70,7 +68,7 @@ public class CreateImage {
         dataset.delete();
     }
 
-    public boolean isInitDataset(){
-        return Objects.nonNull(nameFile) && width !=0 && height != 0;
+    public boolean isInitDataset() {
+        return Objects.nonNull(nameFile) && width != 0 && height != 0;
     }
 }

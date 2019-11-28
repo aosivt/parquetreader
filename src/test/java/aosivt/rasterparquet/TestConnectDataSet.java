@@ -2,7 +2,6 @@ package aosivt.rasterparquet;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -11,14 +10,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.IntStream;
 import javax.imageio.stream.ImageInputStream;
-
 import org.apache.avro.generic.GenericRecord;
 import org.junit.Test;
 import org.kitesdk.data.*;
-import org.kitesdk.shaded.com.google.common.collect.Iterators;
 
 public class TestConnectDataSet {
-    private static final String PATH_PARQUET = "file:///home/oshchepkovay/dev/parquetLC08_L1TP_142020_20190907_20190907_01_RT";
+    private static final String PATH_PARQUET =
+            "file:///home/oshchepkovay/dev/parquetLC08_L1TP_142020_20190907_20190907_01_RT";
 
     @Test
     public void assertDataSet() throws IOException, URISyntaxException {
@@ -36,14 +34,13 @@ public class TestConnectDataSet {
         while (reader.hasNext()) {
             GenericRecord record = reader.next();
             rowId = (int) record.get(0);
-            if (!ci.isInitDataset()){
+            if (!ci.isInitDataset()) {
                 countColValue = (int) record.get(1);
                 countRowValue = (int) record.get(2);
 
                 ci.initDataset(nameImage, countColValue, countRowValue);
                 ci.addProjection((String) record.get(3));
                 ci.addGeoTransform((List<Double>) record.get(4));
-
             }
 
             List<Float> templateData = ((List<Float>) record.get(5));

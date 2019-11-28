@@ -7,8 +7,7 @@
     <relativePath>../pom.xml/pom.xml</relativePath>
   </parent>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.geotools</groupId>
-  <artifactId>parquetreader</artifactId>
+  <artifactId>rasterparquet</artifactId>
   <name>Geo Parquet Reader datasource module</name>
   <version>0.0.0</version>
   <description>Reader parquet data image</description>
@@ -113,242 +112,24 @@
   </repositories>
   <dependencies>
     <dependency>
-      <groupId>org.geotools</groupId>
-      <artifactId>gt-main</artifactId>
-      <version>23-SNAPSHOT</version>
-      <scope>provided</scope>
-      <exclusions>
-        <exclusion>
-          <artifactId>jts-core</artifactId>
-          <groupId>org.locationtech.jts</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>commons-text</artifactId>
-          <groupId>org.apache.commons</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.geotools</groupId>
-      <artifactId>gt-coverage</artifactId>
-      <version>23-SNAPSHOT</version>
-      <scope>provided</scope>
-      <exclusions>
-        <exclusion>
-          <artifactId>jt-zonalstats</artifactId>
-          <groupId>org.jaitools</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-utils</artifactId>
-          <groupId>org.jaitools</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-affine</artifactId>
-          <groupId>it.geosolutions.jaiext.affine</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-algebra</artifactId>
-          <groupId>it.geosolutions.jaiext.algebra</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-bandmerge</artifactId>
-          <groupId>it.geosolutions.jaiext.bandmerge</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-bandselect</artifactId>
-          <groupId>it.geosolutions.jaiext.bandselect</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-bandcombine</artifactId>
-          <groupId>it.geosolutions.jaiext.bandcombine</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-border</artifactId>
-          <groupId>it.geosolutions.jaiext.border</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-buffer</artifactId>
-          <groupId>it.geosolutions.jaiext.buffer</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-crop</artifactId>
-          <groupId>it.geosolutions.jaiext.crop</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-iterators</artifactId>
-          <groupId>it.geosolutions.jaiext.iterators</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-lookup</artifactId>
-          <groupId>it.geosolutions.jaiext.lookup</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-mosaic</artifactId>
-          <groupId>it.geosolutions.jaiext.mosaic</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-nullop</artifactId>
-          <groupId>it.geosolutions.jaiext.nullop</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-rescale</artifactId>
-          <groupId>it.geosolutions.jaiext.rescale</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-scale</artifactId>
-          <groupId>it.geosolutions.jaiext.scale</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-scale2</artifactId>
-          <groupId>it.geosolutions.jaiext.scale2</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-stats</artifactId>
-          <groupId>it.geosolutions.jaiext.stats</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-translate</artifactId>
-          <groupId>it.geosolutions.jaiext.translate</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-utilities</artifactId>
-          <groupId>it.geosolutions.jaiext.utilities</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-warp</artifactId>
-          <groupId>it.geosolutions.jaiext.warp</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-zonal</artifactId>
-          <groupId>it.geosolutions.jaiext.zonal</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-binarize</artifactId>
-          <groupId>it.geosolutions.jaiext.binarize</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-format</artifactId>
-          <groupId>it.geosolutions.jaiext.format</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-colorconvert</artifactId>
-          <groupId>it.geosolutions.jaiext.colorconvert</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-errordiffusion</artifactId>
-          <groupId>it.geosolutions.jaiext.errordiffusion</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-orderdither</artifactId>
-          <groupId>it.geosolutions.jaiext.orderdither</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-colorindexer</artifactId>
-          <groupId>it.geosolutions.jaiext.colorindexer</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-imagefunction</artifactId>
-          <groupId>it.geosolutions.jaiext.imagefunction</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-piecewise</artifactId>
-          <groupId>it.geosolutions.jaiext.piecewise</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-classifier</artifactId>
-          <groupId>it.geosolutions.jaiext.classifier</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-rlookup</artifactId>
-          <groupId>it.geosolutions.jaiext.rlookup</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-vectorbin</artifactId>
-          <groupId>it.geosolutions.jaiext.vectorbin</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jt-shadedrelief</artifactId>
-          <groupId>it.geosolutions.jaiext.shadedrelief</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jts-core</artifactId>
-          <groupId>org.locationtech.jts</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.geotools</groupId>
-      <artifactId>gt-referencing</artifactId>
-      <version>23-SNAPSHOT</version>
-      <scope>provided</scope>
-      <exclusions>
-        <exclusion>
-          <artifactId>ejml-ddense</artifactId>
-          <groupId>org.ejml</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>commons-pool</artifactId>
-          <groupId>commons-pool</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>gt-metadata</artifactId>
-          <groupId>org.geotools</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jgridshift-core</artifactId>
-          <groupId>jgridshift</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>GeographicLib-Java</artifactId>
-          <groupId>net.sf.geographiclib</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>javax.media</groupId>
-      <artifactId>jai_imageio</artifactId>
-      <version>1.1</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
       <groupId>it.geosolutions.imageio-ext</groupId>
-      <artifactId>imageio-ext-tiff</artifactId>
+      <artifactId>imageio-ext-gdalenvihdr</artifactId>
       <version>1.3.2</version>
       <scope>provided</scope>
       <exclusions>
         <exclusion>
-          <artifactId>imageio-ext-utilities</artifactId>
+          <artifactId>imageio-ext-gdalframework</artifactId>
           <groupId>it.geosolutions.imageio-ext</groupId>
         </exclusion>
         <exclusion>
-          <artifactId>imageio-ext-geocore</artifactId>
-          <groupId>it.geosolutions.imageio-ext</groupId>
+          <artifactId>jai_codec</artifactId>
+          <groupId>javax.media</groupId>
         </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.geotools</groupId>
-      <artifactId>gt-epsg-hsql</artifactId>
-      <version>23-SNAPSHOT</version>
-      <scope>test</scope>
-      <exclusions>
         <exclusion>
-          <artifactId>hsqldb</artifactId>
-          <groupId>org.hsqldb</groupId>
+          <artifactId>jai_imageio</artifactId>
+          <groupId>javax.media</groupId>
         </exclusion>
       </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.geotools</groupId>
-      <artifactId>gt-sample-data</artifactId>
-      <version>23-SNAPSHOT</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>javax.media</groupId>
-      <artifactId>jai_codec</artifactId>
-      <version>1.1.3</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
