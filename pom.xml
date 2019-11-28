@@ -25,53 +25,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.geotools</groupId>
-            <artifactId>gt-main</artifactId>
-            <version>${version.project}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.geotools</groupId>
-            <artifactId>gt-coverage</artifactId>
-            <version>${version.project}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.geotools</groupId>
-            <artifactId>gt-referencing</artifactId>
-            <version>${version.project}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.media</groupId>
-            <artifactId>jai_imageio</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
             <groupId>it.geosolutions.imageio-ext</groupId>
-            <artifactId>imageio-ext-tiff</artifactId>
-            <scope>provided</scope>
-            <!-- The version number is specified in the parent POM. -->
-        </dependency>
-        <!-- Test dependencies -->
-        <dependency>
-            <!-- We need this to make the referencing module useful. -->
-            <groupId>org.geotools</groupId>
-            <artifactId>gt-epsg-hsql</artifactId>
-            <version>${version.project}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.geotools</groupId>
-            <artifactId>gt-sample-data</artifactId>
-            <version>${version.project}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.media</groupId>
-            <artifactId>jai_codec</artifactId>
-            <!-- The version number is specified in the parent POM. -->
-            <scope>test</scope>
+            <artifactId>imageio-ext-gdalenvihdr</artifactId>
+            <version>1.3.2</version>
         </dependency>
 
 
