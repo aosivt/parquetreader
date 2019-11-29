@@ -1,6 +1,5 @@
 package ru.aosivt.rasterparquet.format;
 
-import it.geosolutions.imageio.plugins.envihdr.ENVIHdrImageReaderSpi;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.geotools.coverage.grid.io.GridFormatFactorySpi;
@@ -18,7 +17,7 @@ public class ParquetImageFormatFactory extends BaseGridFormatFactorySPI
 
         try {
             Class.forName("ru.aosivt.rasterparquet.format.ParquetImageReaderSpi");
-            available = (new ENVIHdrImageReaderSpi()).isAvailable();
+            available = (new ParquetImageReaderSpi()).isAvailable();
             if (LOGGER.isLoggable(Level.FINE)) {
                 if (available) {
                     LOGGER.fine("ParquetImageFormatFactory is available.");
