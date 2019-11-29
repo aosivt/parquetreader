@@ -1,4 +1,4 @@
-package aosivt.rasterparquet;
+package ru.aosivt.rasterparquet;
 
 import java.io.Serializable;
 import java.util.ArrayList;

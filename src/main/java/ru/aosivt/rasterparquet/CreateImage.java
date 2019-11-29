@@ -1,4 +1,4 @@
-package aosivt.rasterparquet;
+package ru.aosivt.rasterparquet;
 
 import java.awt.*;
 import java.util.Objects;
@@ -10,19 +10,19 @@ import org.gdal.gdalconst.gdalconst;
 
 public class CreateImage {
 
-    static {
-        try {
-            System.load("/usr/local/lib/gdal/libgdalconstjni.so");
-            System.load("/usr/local/lib/gdal/libgdaljni.so");
-            System.load("/usr/local/lib/gdal/libgnmjni.so");
-            System.load("/usr/local/lib/gdal/libogrjni.so");
-            System.load("/usr/local/lib/gdal/libosrjni.so");
-
-        } catch (UnsatisfiedLinkError e) {
-            System.err.println("Native code library failed to load.\n" + e);
-            System.exit(1);
-        }
-    }
+    //    static {
+    //        try {
+    //            System.load("/usr/local/lib/gdal/libgdalconstjni.so");
+    //            System.load("/usr/local/lib/gdal/libgdaljni.so");
+    //            System.load("/usr/local/lib/gdal/libgnmjni.so");
+    //            System.load("/usr/local/lib/gdal/libogrjni.so");
+    //            System.load("/usr/local/lib/gdal/libosrjni.so");
+    //
+    //        } catch (UnsatisfiedLinkError e) {
+    //            System.err.println("Native code library failed to load.\n" + e);
+    //            System.exit(1);
+    //        }
+    //    }
 
     private static int scaleImage = 10;
     private String nameFile;

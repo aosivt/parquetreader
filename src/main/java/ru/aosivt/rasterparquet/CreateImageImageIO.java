@@ -1,4 +1,4 @@
-package aosivt.rasterparquet;
+package ru.aosivt.rasterparquet;
 
 import java.awt.*;
 import java.awt.color.ColorSpace;
