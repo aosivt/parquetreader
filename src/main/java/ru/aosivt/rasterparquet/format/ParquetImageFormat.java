@@ -13,7 +13,7 @@ import org.geotools.util.logging.Logging;
 import org.opengis.coverage.grid.Format;
 import org.opengis.geometry.MismatchedDimensionException;
 import ru.aosivt.rasterparquet.errors.CountParameterQuery;
-import ru.aosivt.rasterparquet.utils.ConverterFomat;
+import ru.aosivt.rasterparquet.utils.ConverterFormat;
 
 public class ParquetImageFormat extends BaseGDALGridFormat implements Format {
     private static final Logger LOGGER = Logging.getLogger(ParquetImageFormat.class);
@@ -40,15 +40,15 @@ public class ParquetImageFormat extends BaseGDALGridFormat implements Format {
 
             if (!Files.exists(
                     Paths.get(
-                            ConverterFomat.NAME_SYSTEM_TEMP_DIR.concat(
+                            ConverterFormat.NAME_SYSTEM_TEMP_DIR.concat(
                                     getNameFileImage(parameterQuery))))) {
-                ConverterFomat.initConvert(
+                ConverterFormat.initConvert(
                         getPath(parameterQuery), getNameFileImage(parameterQuery));
             }
 
             source =
                     new File(
-                            ConverterFomat.NAME_SYSTEM_TEMP_DIR.concat(
+                            ConverterFormat.NAME_SYSTEM_TEMP_DIR.concat(
                                     getNameFileImage(parameterQuery)));
         }
 

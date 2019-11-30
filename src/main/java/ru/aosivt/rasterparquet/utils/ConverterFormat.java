@@ -8,7 +8,7 @@ import org.kitesdk.data.Datasets;
 import ru.aosivt.rasterparquet.CreateImage;
 import ru.aosivt.rasterparquet.errors.InitConrterFormat;
 
-public class ConverterFomat {
+public class ConverterFormat {
 
     public static final String EXTENSION_CONVERT = ".bil";
 
@@ -16,8 +16,8 @@ public class ConverterFomat {
 
     private static final String FORMAT_PATH_STRING = "%s/%s.%s";
 
-    private ConverterFomat() {
-        throw new InitConrterFormat("this is not for implements and realisations");
+    private ConverterFormat() {
+        throw new InitConrterFormat("this is not for implements");
     }
 
     public static void initConvert(final String path, final String nameImage) {
