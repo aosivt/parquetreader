@@ -10,35 +10,21 @@ import org.gdal.gdalconst.gdalconst;
 
 public class CreateImage {
 
-    //    static {
-    //        try {
-    //            System.load("/usr/local/lib/gdal/libgdalconstjni.so");
-    //            System.load("/usr/local/lib/gdal/libgdaljni.so");
-    //            System.load("/usr/local/lib/gdal/libgnmjni.so");
-    //            System.load("/usr/local/lib/gdal/libogrjni.so");
-    //            System.load("/usr/local/lib/gdal/libosrjni.so");
-    //
-    //        } catch (UnsatisfiedLinkError e) {
-    //            System.err.println("Native code library failed to load.\n" + e);
-    //            System.exit(1);
-    //        }
-    //    }
+    private static final String NAME_DRIVER = "ENVI";
 
-    private static int scaleImage = 10;
     private String nameFile;
+
     private int width;
-    private int iteratorArray;
+
     private int height;
-    private int maxCountArray;
-    private float[] dataImage;
+
     private Dataset dataset = null;
     private Driver driver = null;
     private Band band = null;
-    private int offset = 0;
 
     public CreateImage() {
         gdal.AllRegister();
-        driver = gdal.GetDriverByName("ENVI");
+        driver = gdal.GetDriverByName(NAME_DRIVER);
     }
 
     public void initDataset(String nameFile, int xsize, int ysize) {
@@ -60,7 +46,6 @@ public class CreateImage {
     }
 
     public void addRow(int rowId, float[] data) {
-
         band.WriteRaster(0, rowId, width, 1, data);
     }
 

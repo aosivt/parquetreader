@@ -176,6 +176,150 @@
       </exclusions>
     </dependency>
     <dependency>
+      <groupId>org.geoserver</groupId>
+      <artifactId>gs-main</artifactId>
+      <version>RELEASE</version>
+      <scope>provided</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>gs-ows</artifactId>
+          <groupId>org.geoserver</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>json-lib</artifactId>
+          <groupId>net.sf.json-lib</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>commons-beanutils</artifactId>
+          <groupId>commons-beanutils</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>commons-fileupload</artifactId>
+          <groupId>commons-fileupload</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>freemarker</artifactId>
+          <groupId>org.freemarker</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>gt-cql</artifactId>
+          <groupId>org.geotools</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>gt-main</artifactId>
+          <groupId>org.geotools</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>gt-jdbc</artifactId>
+          <groupId>org.geotools</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>gt-wfs-ng</artifactId>
+          <groupId>org.geotools</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>gt-metadata</artifactId>
+          <groupId>org.geotools</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>gt-property</artifactId>
+          <groupId>org.geotools</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>gt-wms</artifactId>
+          <groupId>org.geotools</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>gt-wmts</artifactId>
+          <groupId>org.geotools</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>gt-xsd-sld</artifactId>
+          <groupId>org.geotools.xsd</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>spring-aop</artifactId>
+          <groupId>org.springframework</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>spring-jdbc</artifactId>
+          <groupId>org.springframework</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>xstream</artifactId>
+          <groupId>com.thoughtworks.xstream</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>jt-concurrent-tile-cache</artifactId>
+          <groupId>it.geosolutions.jaiext.concurrent-tile-cache</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>activation</artifactId>
+          <groupId>javax.activation</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>oshi-core</artifactId>
+          <groupId>com.github.oshi</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>gt-geotiff</artifactId>
+          <groupId>org.geotools</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>gt-imagemosaic</artifactId>
+          <groupId>org.geotools</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>gs-platform</artifactId>
+          <groupId>org.geoserver</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>spring-security-core</artifactId>
+          <groupId>org.springframework.security</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>spring-core</artifactId>
+          <groupId>org.springframework</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>spring-security-web</artifactId>
+          <groupId>org.springframework.security</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>spring-security-config</artifactId>
+          <groupId>org.springframework.security</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>jasypt</artifactId>
+          <groupId>org.jasypt</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>jasypt-springsecurity3</artifactId>
+          <groupId>org.jasypt</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>bcprov-jdk15on</artifactId>
+          <groupId>org.bouncycastle</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>spring-beans</artifactId>
+          <groupId>org.springframework</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>spring-context</artifactId>
+          <groupId>org.springframework</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>spring-webmvc</artifactId>
+          <groupId>org.springframework</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>gt-epsg-hsql</artifactId>
+          <groupId>org.geotools</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
       <groupId>org.geotools</groupId>
       <artifactId>gt-coverage</artifactId>
       <version>23-SNAPSHOT</version>
@@ -183,10 +327,6 @@
       <exclusions>
         <exclusion>
           <artifactId>gt-referencing</artifactId>
-          <groupId>org.geotools</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>gt-main</artifactId>
           <groupId>org.geotools</groupId>
         </exclusion>
         <exclusion>
@@ -336,6 +476,10 @@
         <exclusion>
           <artifactId>jt-shadedrelief</artifactId>
           <groupId>it.geosolutions.jaiext.shadedrelief</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>gt-main</artifactId>
+          <groupId>org.geotools</groupId>
         </exclusion>
       </exclusions>
     </dependency>

@@ -1,7 +1,6 @@
 package ru.aosivt.rasterparquet.format;
 
 import it.geosolutions.imageio.gdalframework.GDALImageReader;
-import it.geosolutions.imageio.stream.input.FileImageInputStreamExt;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -33,28 +32,15 @@ public class ParquetDataImageReader extends GDALImageReader {
 
     public void setInput(Object input, boolean seekForwardOnly, boolean ignoreMetadata) {
 
-        super.setInput(getConverted(input), seekForwardOnly, ignoreMetadata);
-        //        Dataset mainDataSet = null;
-        //        String mainDatasetName = "";
-        //        try {
-        //            addDatasetMap(mainDatasetName, mainDataSet);
-        //            ((ImageReader)this).setInput(this.imageInputStream, seekForwardOnly,
-        // ignoreMetadata);
-        //        } catch (IllegalAccessException e) {
-        //            e.printStackTrace();
-        //        }
-        //        AppContext.getAppContext();
+        convert(input);
+        super.setInput(input, seekForwardOnly, ignoreMetadata);
     }
 
-    private File getConverted(Object input) {
-        File convertedInput = null;
+    private Object convert(Object input) {
         if (input instanceof File) {
-            convertedInput = getConvertedFile((File) input);
-
-        } else if (input instanceof FileImageInputStreamExt) {
-            convertedInput = getConvertedFile((((FileImageInputStreamExt) input).getFile()));
+            input = getConvertedFile((File) input);
         }
-        return convertedInput;
+        return input;
     }
 
     private File getConvertedFile(File input) {

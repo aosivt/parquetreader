@@ -18,6 +18,8 @@ public class ParquetMetaDataReader extends BaseGDALGridCoverage2DReader
     }
 
     public ParquetMetaDataReader(Object input, Hints hints) throws DataSourceException {
+        //
+
         super(input, hints, ".wld", new ParquetImageReaderSpi());
     }
 

@@ -31,6 +31,12 @@
             <version>${version.project}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.geoserver</groupId>
+            <artifactId>gs-main</artifactId>
+            <version>RELEASE</version>
+            <scope>provided</scope>
+        </dependency>
 
 <!--        <dependency>-->
 <!--            <groupId>it.geosolutions.imageio-ext</groupId>-->
