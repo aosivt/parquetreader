@@ -5,14 +5,12 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.geoserver.catalog.CatalogRepository;
 import org.geotools.coverageio.gdal.BaseGDALGridFormat;
 import org.geotools.data.DataSourceException;
 import org.geotools.util.factory.Hints;
 import org.geotools.util.logging.Logging;
 import org.opengis.coverage.grid.Format;
 import org.opengis.geometry.MismatchedDimensionException;
-import ru.aosivt.rasterparquet.errors.CountParameterQuery;
 import ru.aosivt.rasterparquet.utils.ConverterFormat;
 
 public class ParquetImageFormat extends BaseGDALGridFormat implements Format {
@@ -36,20 +34,19 @@ public class ParquetImageFormat extends BaseGDALGridFormat implements Format {
 
         if (source instanceof File) {
 
-            String[] parameterQuery = getParameterQuery(hints);
+            String[] parameterQuery = ConverterFormat.getParameterQuery(hints);
 
             if (!Files.exists(
                     Paths.get(
-                            ConverterFormat.NAME_SYSTEM_TEMP_DIR.concat(
-                                    getNameFileImage(parameterQuery))))) {
-                ConverterFormat.initConvert(
-                        getPath(parameterQuery), getNameFileImage(parameterQuery));
+                            ConverterFormat.getConvertedPathString(
+                                    ConverterFormat.getNameFileImage(parameterQuery))))) {
+                ConverterFormat.initConvert(parameterQuery);
             }
 
             source =
                     new File(
-                            ConverterFormat.NAME_SYSTEM_TEMP_DIR.concat(
-                                    getNameFileImage(parameterQuery)));
+                            ConverterFormat.getConvertedPathString(
+                                    ConverterFormat.getNameFileImage(parameterQuery)));
         }
 
         RuntimeException re;
@@ -64,32 +61,5 @@ public class ParquetImageFormat extends BaseGDALGridFormat implements Format {
             re.initCause(var6);
             throw re;
         }
-    }
-
-    protected String[] getParameterQuery(Hints hints) {
-        String[] pathParameter =
-                ((CatalogRepository) hints.get(Hints.REPOSITORY))
-                        .getCatalog()
-                        .getCoverageStores()
-                        .get(0)
-                        .getURL()
-                        .split("[?]")[1]
-                        .split("&");
-        if (pathParameter.length < 4) {
-            throw new CountParameterQuery("count parameter don`t не достаточно)))");
-        }
-        return pathParameter;
-    }
-
-    protected String getPath(String[] parameterQuery) {
-        return String.format(
-                "%s//%s/%s/",
-                FORMAT_QUERY.TYPE_FS.get(parameterQuery),
-                FORMAT_QUERY.HOST.get(parameterQuery),
-                FORMAT_QUERY.PATH.get(parameterQuery));
-    }
-
-    protected String getNameFileImage(String[] parameterQuery) {
-        return FORMAT_QUERY.NAME_FILE.get(parameterQuery);
     }
 }
