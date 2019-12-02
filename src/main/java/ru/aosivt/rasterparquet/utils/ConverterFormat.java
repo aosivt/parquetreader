@@ -52,11 +52,9 @@ public class ConverterFormat {
 
         DatasetDescriptor descriptor =
                 new DatasetDescriptor.Builder()
-                        //                .schemaUri()
                         .compressionType(CompressionType.Uncompressed)
                         .property("parquet.block.size", "50MB")
                         .schema(Object.class)
-                        //                .schemaUri(resourcePath)
                         .format(Formats.PARQUET)
                         .build();
         org.kitesdk.data.Dataset satelliteImageSet = null;
