@@ -1,13 +1,14 @@
 package ru.aosivt.rasterparquet.utils;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.IntStream;
 import org.apache.avro.generic.GenericRecord;
+import org.apache.avro.generic.GenericRecordBuilder;
 import org.apache.hadoop.conf.Configuration;
 import org.geoserver.catalog.CatalogRepository;
 import org.geotools.util.factory.Hints;
-import org.kitesdk.data.DatasetReader;
-import org.kitesdk.data.Datasets;
+import org.kitesdk.data.*;
 import org.kitesdk.data.spi.DefaultConfiguration;
 import ru.aosivt.rasterparquet.CreateImage;
 import ru.aosivt.rasterparquet.errors.CountParameterQuery;
@@ -49,8 +50,24 @@ public class ConverterFormat {
         final String nameImage = getNameFileImage(parameterQuery);
         final Integer offsetCol = getOffsetColl(parameterQuery);
 
-        org.kitesdk.data.Dataset satelliteImageSet =
-                Datasets.load(String.format("dataset:%s", path));
+        DatasetDescriptor descriptor =
+                new DatasetDescriptor.Builder()
+                        //                .schemaUri()
+                        .compressionType(CompressionType.Uncompressed)
+                        .property("parquet.block.size", "50MB")
+                        .schema(Object.class)
+                        //                .schemaUri(resourcePath)
+                        .format(Formats.PARQUET)
+                        .build();
+        org.kitesdk.data.Dataset satelliteImageSet = null;
+        try {
+            satelliteImageSet = Datasets.load(String.format("dataset:%s", path));
+        } catch (org.kitesdk.data.DatasetNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        }
+        if (Objects.isNull(satelliteImageSet)) {
+            satelliteImageSet = Datasets.create(String.format("dataset:%s", path), descriptor);
+        }
 
         DatasetReader<GenericRecord> reader = satelliteImageSet.newReader();
 

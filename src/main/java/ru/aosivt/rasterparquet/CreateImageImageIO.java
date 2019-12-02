@@ -7,6 +7,7 @@ import java.io.*;
 import javax.imageio.ImageIO;
 import javax.imageio.stream.ImageInputStream;
 
+/** @deprecated not use for realisation */
 public class CreateImageImageIO {
 
     final BufferedImage img;

@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.List;
 import org.apache.avro.Schema;
 
+/** @deprecated not use for realisation */
 public class RedNirSatellite implements Serializable, org.apache.avro.generic.IndexedRecord {
     public static final Schema SCHEMA$ =
             new Schema.Parser()
