@@ -16,7 +16,7 @@ import org.kitesdk.data.*;
 
 public class TestConnectDataSet {
     private static final String PATH_PARQUET =
-            "file:///home/oshchepkovay/dev/parquetLC08_L1TP_142020_20190907_20190907_01_RT";
+            "hdfs://claster@localhost:8020/user/claster/temp/parquet/image";
 
     @Test
     public void assertDataSet() throws IOException, URISyntaxException {

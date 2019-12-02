@@ -3,17 +3,21 @@ package ru.aosivt.rasterparquet.utils;
 import java.util.List;
 import java.util.stream.IntStream;
 import org.apache.avro.generic.GenericRecord;
+import org.apache.hadoop.conf.Configuration;
 import org.geoserver.catalog.CatalogRepository;
 import org.geotools.util.factory.Hints;
 import org.kitesdk.data.DatasetReader;
 import org.kitesdk.data.Datasets;
+import org.kitesdk.data.spi.DefaultConfiguration;
 import ru.aosivt.rasterparquet.CreateImage;
 import ru.aosivt.rasterparquet.errors.CountParameterQuery;
 import ru.aosivt.rasterparquet.errors.InitConrterFormat;
 
 public class ConverterFormat {
 
-    public static final String EXTENSION_CONVERT = ".bil";
+    private static final Configuration conf = new Configuration(true);
+
+    public static final String EXTENSION_CONVERT = "bil";
 
     public static final String LOCAL_TYPE_FS = "file";
     public static final String HDFS_TYPE_FS = "hdfs";
@@ -28,6 +32,12 @@ public class ConverterFormat {
     public static final String NAME_SYSTEM_TEMP_DIR = System.getProperty("java.io.tmpdir");
 
     private static final String FORMAT_PATH_STRING = "%s/%s.%s";
+
+    static {
+        conf.set("fs.hdfs.impl", org.apache.hadoop.hdfs.DistributedFileSystem.class.getName());
+        conf.set("fs.file.impl", org.apache.hadoop.fs.LocalFileSystem.class.getName());
+        DefaultConfiguration.set(conf);
+    }
 
     private ConverterFormat() {
         throw new InitConrterFormat("this is not for implements");
@@ -62,7 +72,7 @@ public class ConverterFormat {
             List<Float> templateData =
                     ((List<Float>) record.get(INDEX_ROW_READING_VALUES + offsetCol));
             final float[] data = new float[countColValue];
-            IntStream.range(0, countColValue - 1)
+            IntStream.range(0, countColValue)
                     .boxed()
                     .forEach(index -> data[index] = templateData.get(index));
             ci.addRow(rowId, data);
