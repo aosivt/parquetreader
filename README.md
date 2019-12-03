@@ -19,7 +19,7 @@ for HDFS PATH_DIR_PARUQET = [HOST_HDFS]:[PORT]/[PATH]
 example:
 
 
-for local
+# for local
 
 
 http://localhost:8080/geoserver?
@@ -34,7 +34,7 @@ file&
 2
 
 
-for hdfs
+# for hdfs
 
 http://localhost:8080/geoserver?
 
@@ -46,9 +46,9 @@ localhost:8080/home/alex/dev/parquetLE71310222013244EDC00&
 
 &2
 
-#for rest api geoserver
+# for rest api geoserver
 
-#Create workspace
+# Create workspace
 
 post query
 
@@ -62,7 +62,7 @@ body (application/json)
 	}
 }
 
-#Create coveragestores
+# Create coveragestores
 
 post query
 
@@ -80,7 +80,7 @@ body (application/json)
 }
 }
 
-#Create layer
+# Create layer
 
 post query
 
