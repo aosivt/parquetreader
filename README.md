@@ -1,10 +1,29 @@
 # parquetreader
 
-this is plugin for geoserver wms service (read parquet file on local file system or hdfs).
+this is plugin for geoserver wms service on base GDAL Reader(read parquet file on local file system or hdfs).
+
+# configure GDAL for java
+
+config inside src gdal
+
+```bash
+    ./configure --with-poppler --with-pg --with-curl --with-geos --with-jpeg --with-png --with-expat --with-xerces --with-java=/usr/lib/jvm/java-8-openjdk-amd64/ --with-jvm-lib=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/server/ --with-jvm-lib-add-rpath=yes --with-mdb=yes
+```
+
+```bash
+    make
+```
+
+```bash
+    sudo make install
+```
+
 
 template query
+```http
+    http://[HOST_GEOSERVER:[PORT]]/geoserver?[TYPE_FS]&[PATH_DIR_PARUQET]&[NAME_PARQUET_FILE_WITH_EXTENCION]&[OFFSET]
+```
 
-http://[HOST_GEOSERVER:[PORT]]/geoserver?[TYPE_FS]&[PATH_DIR_PARUQET]&[NAME_PARQUET_FILE_WITH_EXTENCION]&[OFFSET]
 
 for LOCAL_FS_SYSTEM PATH_DIR_PARUQET = [PATH]
 
@@ -94,7 +113,7 @@ body (application/json)
 ```
 
 	
-# Set exist layer (example NDVI)	
+# Set exist style for exist layer (example NDVI)	
  PUT query 
  
  http://localhost:8080/geoserver/rest/layers/wsparquet:parquet
