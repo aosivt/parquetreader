@@ -96,6 +96,20 @@ body (application/json)
 	}
 }
 	
+# Set exist layer (example NDVI)	
+ PUT query 
+ 
+ http://localhost:8080/geoserver/rest/layers/wsparquet:parquet
+ 
+ body
+ 
+ {
+	"layer":{
+		"defaultStyle":{
+			"name":"NDVI"
+		}
+	}
+}
 
 
 
