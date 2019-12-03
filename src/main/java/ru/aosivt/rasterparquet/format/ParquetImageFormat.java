@@ -33,22 +33,18 @@ public class ParquetImageFormat extends BaseGDALGridFormat implements Format {
     public ParquetMetaDataReader getReader(Object source, Hints hints) {
 
         if (source instanceof File) {
-
-            String[] parameterQuery = ConverterFormat.getParameterQuery(hints);
-
-            if (!Files.exists(
-                    Paths.get(
-                            ConverterFormat.getConvertedPathString(
-                                    ConverterFormat.getNameFileImage(parameterQuery))))) {
-                ConverterFormat.initConvert(parameterQuery);
-            }
-
-            source =
-                    new File(
-                            ConverterFormat.getConvertedPathString(
-                                    ConverterFormat.getNameFileImage(parameterQuery)));
+            String[] parameterQuery =
+                    ConverterFormat.getParameterQuery(ConverterFormat.getUrl(hints));
+            source = getSource(parameterQuery);
+        } else if (source instanceof String) {
+            String[] parameterQuery = ConverterFormat.getParameterQuery((String) source);
+            return getParquetMetaDataReader(getSource(parameterQuery), hints);
         }
 
+        return getParquetMetaDataReader(source, hints);
+    }
+
+    private ParquetMetaDataReader getParquetMetaDataReader(Object source, Hints hints) {
         RuntimeException re;
         try {
             return new ParquetMetaDataReader(source, hints);
@@ -61,5 +57,17 @@ public class ParquetImageFormat extends BaseGDALGridFormat implements Format {
             re.initCause(var6);
             throw re;
         }
+    }
+
+    private File getSource(String[] parameterQuery) {
+        if (!Files.exists(
+                Paths.get(
+                        ConverterFormat.getConvertedPathString(
+                                ConverterFormat.getNameFileImage(parameterQuery))))) {
+            ConverterFormat.initConvert(parameterQuery);
+        }
+        return new File(
+                ConverterFormat.getConvertedPathString(
+                        ConverterFormat.getNameFileImage(parameterQuery)));
     }
 }

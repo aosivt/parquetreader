@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
 import org.apache.avro.generic.GenericRecord;
-import org.apache.avro.generic.GenericRecordBuilder;
 import org.apache.hadoop.conf.Configuration;
 import org.geoserver.catalog.CatalogRepository;
 import org.geotools.util.factory.Hints;
@@ -102,19 +101,20 @@ public class ConverterFormat {
                 FORMAT_QUERY.TYPE_FS.get(parameterQuery), FORMAT_QUERY.PATH.get(parameterQuery));
     }
 
-    public static String[] getParameterQuery(Hints hints) {
-        String[] pathParameter =
-                ((CatalogRepository) hints.get(Hints.REPOSITORY))
-                        .getCatalog()
-                        .getCoverageStores()
-                        .get(0)
-                        .getURL()
-                        .split("[?]")[1]
-                        .split("&");
+    public static String[] getParameterQuery(String url) {
+        String[] pathParameter = url.split("[?]")[1].split("&");
         if (pathParameter.length < 3) {
             throw new CountParameterQuery("count parameter don`t не достаточно)))");
         }
         return pathParameter;
+    }
+
+    public static String getUrl(Hints hints) {
+        return ((CatalogRepository) hints.get(Hints.REPOSITORY))
+                .getCatalog()
+                .getCoverageStores()
+                .get(0)
+                .getURL();
     }
 
     public static String getNameFileImage(String[] parameterQuery) {
