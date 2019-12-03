@@ -2,7 +2,7 @@
 
 this is plugin for geoserver wms service on base GDAL Reader(read parquet file on local file system or hdfs).
 
-# configure GDAL for java
+# Configure GDAL for java
 
 config inside src gdal
 
@@ -18,8 +18,9 @@ config inside src gdal
     sudo make install
 ```
 
+move getting "so" file where place jre/lib 
 
-template query
+# Template query
 ```http
     http://[HOST_GEOSERVER:[PORT]]/geoserver?[TYPE_FS]&[PATH_DIR_PARUQET]&[NAME_PARQUET_FILE_WITH_EXTENCION]&[OFFSET]
 ```
@@ -31,7 +32,7 @@ for LOCAL_FS_SYSTEM PATH_DIR_PARUQET = [PATH]
 for HDFS PATH_DIR_PARUQET = [HOST_HDFS]:[PORT]/[PATH]
 
 
-example:
+# Example:
 
 # for local
 
@@ -45,11 +46,11 @@ http://localhost:8080/geoserver?file&/home/alex/dev/parquetLE71310222013244EDC00
 http://localhost:8080/geoserver?hdfs&localhost:8080/home/alex/dev/parquetLE71310222013244EDC00&704ec4c8-c509-44b2-a30d-112c1da987c2.parquet&2
 ```
 
-# for rest api geoserver
+# Rest api geoserver
 
 # Create workspace
 
-post query
+# POST query
 
 ```http
 http://localhost:8080/geoserver/rest/workspaces
@@ -70,7 +71,7 @@ body (application/json)
 
 # Create coveragestores
 
-post query
+# POST query
 
 ```http
     http://localhost:8080/geoserver/rest/workspaces/wsparquet/coveragestores
@@ -93,7 +94,7 @@ body (application/json)
 
 # Create layer
 
-post query
+# POST query
 
 ```http
 
@@ -114,7 +115,7 @@ body (application/json)
 
 	
 # Set exist style for exist layer (example NDVI)	
- PUT query 
+# PUT query 
  
  http://localhost:8080/geoserver/rest/layers/wsparquet:parquet
  
