@@ -26,7 +26,7 @@ move getting "so" file where place jre/lib
 ```
 
 
-for LOCAL_FS_SYSTEM PATH_DIR_PARUQET = [PATH]
+for local PATH_DIR_PARUQET = [PATH]
 
 
 for HDFS PATH_DIR_PARUQET = [HOST_HDFS]:[PORT]/[PATH]
